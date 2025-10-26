@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Khushi Joshi — Portfolio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --max-width: 1100px;
+      --accent: #a855f7;
+      --bg: #0f0f10;
+      --card-bg: #1a1a1d;
+      --muted: #9ca3af;
+      --radius: 12px;
+      font-family: 'Inter', system-ui;
+      color: #f9fafb;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    .site { max-width: var(--max-width); margin: 0 auto; padding: 2rem 1.25rem; animation: fadeIn 1s ease; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    [data-animate] { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    [data-animate].visible { opacity: 1; transform: translateY(0); }
+
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 0; }
+    .brand { font-weight: 700; font-size: 1.3rem; color: var(--accent); transition: transform 0.3s; }
+    .brand:hover { transform: scale(1.05); text-shadow: 0 0 10px var(--accent); }
+    .nav-links a { color: #f9fafb; text-decoration: none; margin-left: 1rem; font-weight: 500; transition: color 0.3s, text-shadow 0.3s; }
+    .nav-links a:hover { color: var(--accent); text-shadow: 0 0 10px var(--accent); }
+
+    .hero { display: flex; flex-wrap: wrap; align-items: center; gap: 2rem; padding: 2rem; background: var(--card-bg); border-radius: var(--radius); animation: fadeIn 1.2s ease; }
+    .badge-img { width: 160px; height: 160px; border-radius: 50%; background: #2d2d33; display: flex; align-items: center; justify-content: center; color: var(--muted); font-weight: 600; font-size: 0.9rem; box-shadow: 0 0 20px rgba(168,85,247,0.3); }
+    .hero-left { flex: 1; min-width: 250px; }
+    .title { font-size: 1.75rem; color: #fff; margin-bottom: 0.5rem; animation: glowText 2s ease-in-out infinite alternate; }
+    @keyframes glowText { from { text-shadow: 0 0 10px var(--accent); } to { text-shadow: 0 0 20px var(--accent), 0 0 30px var(--accent); } }
+    .subtitle { color: var(--accent); font-weight: 600; margin-bottom: 1rem; }
+    .muted { color: var(--muted); }
+
+    .btn, .btn-primary {
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--accent);
+      background: transparent;
+      color: var(--accent);
+      cursor: pointer;
+      font-weight: 600;
+      margin-right: 0.5rem;
+      transition: all 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover, .btn-primary:hover {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 0 20px var(--accent);
+      transform: translateY(-2px);
+    }
+
+    section h2 { color: var(--accent); margin-bottom: 1rem; position: relative; display: inline-block; }
+    section h2::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); animation: slideLine 3s linear infinite; }
+    @keyframes slideLine { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .card { background: var(--card-bg); padding: 1rem; border-radius: var(--radius); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3); transition: transform 0.3s, box-shadow 0.3s; }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 0 15px var(--accent); }
+    .card h3 { color: var(--accent); margin-bottom: 0.5rem; }
+    .card ul { list-style: none; padding-left: 0; color: var(--muted); }
+    .card ul li { margin-bottom: 0.3rem; }
+
+    .projects, .gallery, .hackerrank-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .proj, .gallery-item, .hackerrank-item {
+      background: var(--card-bg);
+      padding: 1rem;
+      border-radius: var(--radius);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+    }
+
+    .proj:hover, .gallery-item:hover, .hackerrank-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 20px var(--accent);
+    }
+
+    .proj h4, .gallery-item h4, .hackerrank-item h4 { color: var(--accent); margin-bottom: 0.25rem; }
+    .hackerrank-item img { width: 100%; border-radius: 10px; margin-top: 0.5rem; }
+
+    footer { text-align: center; margin-top: 2rem; color: var(--muted); font-size: 0.9rem; }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 0.5rem; transition: text-shadow 0.3s; }
+    footer a:hover { text-shadow: 0 0 10px var(--accent); }
+
+    @media(max-width:550px){ .hero { flex-direction: column; align-items: flex-start; } }
+  </style>
+</head>
+<body>
+  <div class="site">
+    <header class="nav">
+      <div class="brand">Khushi Joshi</div>
+      <nav class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#hackerrank">HackerRank</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" data-animate>
+      <div class="badge-img">
+        <img src="profile.jpg" alt="Khushi Joshi" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+      </div>
+      <div class="hero-left">
+        <h1 class="title">Tech Enthusiast</h1>
+        <h2 class="subtitle">B.Tech CSE Student</h2>
+        <p class="muted">I’m a B.Tech CSE student passionate about building intelligent web applications and exploring AI-powered technologies.</p>
+        <div style="margin-top:1rem">
+          <button class="btn" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'});">My Projects</button>
+          <button class="btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">Contact Me</button>
+          <a class="btn" href="Resume khushi .pdf" download="Khushi_Joshi_Resume.pdf">Download Resume</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" style="margin-top:2rem" data-animate>
+      <div class="grid">
+        <div class="card">
+          <h3>Skills</h3>
+          <ul>
+            <li>Java, C, C++</li>
+            <li>Python (AI/ML Basics)</li>
+            <li>HTML, CSS, JavaScript</li>
+            <li>React, FastAPI</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Academics</h3>
+          <p class="muted">Completed all 5 units of <strong>Advanced Programming Practice (E-curricula)</strong>.</p>
+        </div>
+        <div class="card">
+          <h3>Achievements</h3>
+          <ul>
+            <li>Java Certificate</li>
+            <li>C Certificate</li>
+            <li>C++ Certificate</li>
+            <li>Smart India Hackathon Certificate</li>
+            <li>Designathon Hackathon Certificate</li>
+            <li>YBI Foundation AI-ML with Data Science Internship</li>
+            <li>Deloitte Cybersecurity Job Simulation Certificate</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" style="margin-top:2rem" data-animate>
+      <h2>Projects</h2>
+      <div class="projects">
+        <div class="proj">
+          <h4>Terra Alert</h4>
+          <p class="muted">Rockfall prediction in open pit mines using data analysis and alert systems.</p>
+        </div>
+        <div class="proj">
+          <h4>Revia</h4>
+          <p class="muted">Multimodal Meeting Assistant enhancing productivity through voice and vision inputs.</p>
+        </div>
+        <div class="proj">
+          <h4>Lume Virtual Study Room</h4>
+          <p class="muted">A virtual study and focus room with live video chats for collaborative learning.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW HACKERRANK SECTION -->
+    <section id="hackerrank" style="margin-top:2rem" data-animate>
+      <h2>HackerRank Progress</h2>
+      <p class="muted">Here’s a snapshot of my problem-solving journey across different difficulty levels on HackerRank.</p>
+      <div class="hackerrank-gallery">
+        <div class="hackerrank-item">
+          <h4>Easy Problems</h4>
+          <img src="easy.jpg" alt="HackerRank Easy Problems">
+        </div>
+        <div class="hackerrank-item">
+          <h4>Medium Problems</h4>
+          <img src="medium.jpg" alt="HackerRank Medium Problems">
+        </div>
+        <div class="hackerrank-item">
+          <h4>Hard Problems</h4>
+          <img src="hard.jpg" alt="HackerRank Hard Problems">
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" style="margin-top:2rem" data-animate>
+      <h2>Internships & Certifications</h2>
+      <div class="gallery">
+        <div class="gallery-item">
+          <h4>YBI Foundation Internship</h4>
+          <p class="muted">AI/ML with Data Science — practical exposure to real-world data-driven tasks.</p>
+          <a href="YBI Certificate.pdf" target="_blank" class="btn">View Certificate</a>
+        </div>
+        <div class="gallery-item">
+          <h4>Deloitte Cybersecurity Simulation</h4>
+          <p class="muted">Completed Deloitte’s virtual job simulation program in cybersecurity.</p>
+          <a href="DElloite.pdf" target="_blank" class="btn">View Certificate</a>
+        </div>
+        <div class="gallery-item">
+          <h4>Smart India Hackathon</h4>
+          <p class="muted">National-level competition for innovative tech solutions.</p>
+          <img src="SmartIndia.jpg" alt="Smart India Hackathon Certificate" style="width:100%;border-radius:10px;margin-top:0.5rem;">
+        </div>
+        <div class="gallery-item">
+          <h4>Designathon Hackathon</h4>
+          <p class="muted">Showcased creativity and design thinking for modern tech problems.</p>
+          <img src="Designathon.jpg" alt="Designathon Certificate" style="width:100%;border-radius:10px;margin-top:0.5rem;">
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+      <p>Connect with me:</p>
+      <p>
+        <a href="mailto:21khushijoshi@gmail.com">21khushijoshi@gmail.com</a> |
+        <a href="mailto:kj8388@srmist.edu.in">kj8388@srmist.edu.in</a> |
+        <a href="https://github.com/21khushijoshi" target="_blank">GitHub</a>
+      </p>
+      <p style="margin-top:0.5rem">© 2025 Khushi Joshi</p>
+    </footer>
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
